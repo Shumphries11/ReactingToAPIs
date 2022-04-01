@@ -11,12 +11,14 @@ const App = () => {
         fetch('https://ghibliapi.herokuapp.com/films')
             .then(res => res.json())
             .then(allFilms => setFilm(allFilms))
+            .catch(err => alert(err))
     }, [loadedFilms]);
 
     useEffect(() => {
         fetch('https://ghibliapi.herokuapp.com/people')
             .then(res => res.json())
             .then(allPeople => setPeople(allPeople))
+            .catch(err => alert(err))
     }, [loadedPeople]);
 
     const getFilms = () => {
@@ -48,7 +50,7 @@ const App = () => {
                                     <div className="card shadow my-2">
                                         <div className="card-body">
                                             <h3 className="card-title">{films.title}</h3>
-                                            <img src={films.image} alt="" height="200px"  />
+                                            <img src={films.image} alt="" height="200px" />
                                             <p className="card-text">{films.description}</p>
                                         </div>
                                     </div>
@@ -90,7 +92,7 @@ const App = () => {
                                             <h3>{person.name}</h3>
                                         </div>
                                         <div className="card-body">
-                                            
+
                                             <p className="card-subtitle">Age: {person.age}</p>
                                             <p className="card-subtitle">Gender: {person.gender}</p>
                                             <a target="_blank" href={person.url}>JSON Link</a>
@@ -126,7 +128,7 @@ const App = () => {
                     <div className="col-md-8">
                         <div className="card shadow md-4 text-center m-5">
                             <div className="card-body">
-                            A web application built to display all animated movies made by Studio Ghibli and the characters in them.
+                                A web application built to display all animated movies made by Studio Ghibli and the characters in them.
                             </div>
                         </div>
                     </div>
